@@ -66,19 +66,19 @@ import shutil
 # import textract
 import os 
 import hashlib
-archived = shutil.make_archive('ert', 'zip', 'F:/testinggit/datas')
-f1=open("ert.zip","rb")
+archived = shutil.make_archive('ert', 'tar', 'F:/testinggit/datas')
+f1=open("ert.tar","rb")
 # print(bytes.fromhex(f1.read().hex()))
 # fgt=hashlib.sha256(f1.read()).hexdigest()
 print(f1.read())
-f2=open("createdzip.zip","wb")
+f2=open("createdzip.tar","wb")
 f1.seek(0)
 # f2.write(bytes.fromhex(f1.read().hex()))
 f2.write(base64.b64decode(base64.b64encode(f1.read())))
 f1.close()
 f2.close()
-shutil.unpack_archive("createdzip.zip")
-os.remove("createdzip.zip")
+shutil.unpack_archive("createdzip.tar")
+os.remove("createdzip.tar")
 
 # text=textract.process(r"F:\testinggit\datas\The.Amazing.Spiderman.(2012).1080p.Dual.Audio.(Hin-Eng)-001.mkv",encoding="utf-8")
 # print(text)

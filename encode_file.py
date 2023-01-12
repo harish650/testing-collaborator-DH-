@@ -60,9 +60,7 @@ if __name__ == '__main__':
 			charmap_dic[key_cjarmap]=chr(indec_cgmao)
 			key_cjarmap+=1
 	f=open("testing_zip.zip","rb")
-	# str1=f.read()	
-
-
+	# str1=f.read()
 	print("aftering reading a file:",datetime.datetime.now())
 	# .translate({ord(c): None for c in string.whitespace})
 	# print(len(string))
@@ -96,6 +94,8 @@ if __name__ == '__main__':
 			heapq.heappush(nodes, newNode)
 
 		printNodes(nodes[0])
+		if rrun!=0 and len(final_dic_list[len(final_dic_list)-1])<len(dic):
+			break
 		final_dic_list.append(dic)
 		print(dic)
 		print("after heap:",datetime.datetime.now())
@@ -171,24 +171,7 @@ if __name__ == '__main__':
 			dd.close()
 		if rrun ==0:
 			f.close()
-
-
-		dd=open("dcomsmall.txt","rb")
-		if rrun!=0:
-			dd.seek(0)
-			if len(dd.read().decode("utf8"))+len(str(final_dic_list))<old_len:
-				dd.seek(0)
-				old_len=len(dd.read().decode("utf8"))+len(str(final_dic_list))
-				dd.close()
-			else:
-				dd.close()
-				break
-		else:
-			dd.seek(0)
-			old_len=len(dd.read().decode("utf8"))+len(str(final_dic_list))	
-			dd.close()
 		rrun+=1
-		print(old_len)
 	print("after writing into file decom:",datetime.datetime.now())
 	dd=open("dcomsmall.txt","ab")
 	dd.write(str(final_dic_list).encode("utf8"))
